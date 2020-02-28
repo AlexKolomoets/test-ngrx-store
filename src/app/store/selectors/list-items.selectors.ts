@@ -12,6 +12,7 @@ export const getEntities = createSelector(
 export const getMaxEntityId = createSelector(
     getEntities,
     (entities: ListItem[]): number => {
+        if (entities.length === 0) return 0;
         const entitiesIds: number[] = entities.map((entity) => Number(entity.id));
         return Math.max(...entitiesIds);
     }
